@@ -1,5 +1,6 @@
 Todo list
 
- - Install and setup(Django)
- - Install and setup(Vue)
- - Include font Awesome
+ - Install and setup(Django)(Установка django)
+ - Install and setup(Vue)(установка vue)
+ - Include font Awesome(Подключение шрифтов)
+ - Set up the base template(Настройка базового шаблона)
