@@ -14,3 +14,4 @@ Todo list
  -Sette app Vuex / State
  -Make it possible to add to cart
     -Add functionality to vuex(Добавил функциональность в vuex)
+    -Initializer Store in app.vue
