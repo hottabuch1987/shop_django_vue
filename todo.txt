@@ -6,4 +6,6 @@ Todo list
  - Set up the base template(Настройка базового шаблона)
  - Create django app and models for products(создание приложенияи и модели продуктов)
  - Create serializer and view for the products(создание сериалазера для модели продуктов)
- - Create simple dront page (latest product)
+ - Create simple front page (latest product)(вывод товаров)
+ - View a product(Просмотр продуктов)
+    -Create viewset in Django(детали продукта)
