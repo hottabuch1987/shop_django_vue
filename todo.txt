@@ -1,0 +1,3 @@
+Todo list
+
+ - Install and setup(Django)
