@@ -9,3 +9,8 @@ Todo list
  - Create simple front page (latest product)(вывод товаров)
  - View a product(Просмотр продуктов)
     -Create viewset in Django(детали продукта)
+    -Create vue page for showing product(детали продукта vue)
+    -Add link to detail page(детали продукта)
+ -Sette app Vuex / State
+ -Make it possible to add to cart
+    -Add functionality to vuex(Добавил функциональность в vuex)
