@@ -1,5 +1,5 @@
 <template>
-  <div id="wraper">
+  <div id="wrapper">
     <nav class="navbar is-dark">
         <div class="navbar-brand">
             <router-link to="/" class="navbar-item">
@@ -33,7 +33,7 @@
     </nav>
 
     <section class="section">
-        <router-view/>
+        <router-view />
     </section>
 
     <footer class="footer">
