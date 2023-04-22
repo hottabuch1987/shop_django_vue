@@ -2,3 +2,4 @@ Todo list
 
  - Install and setup(Django)
  - Install and setup(Vue)
+ - Include font Awesome
