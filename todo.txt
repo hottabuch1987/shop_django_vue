@@ -15,3 +15,5 @@ Todo list
  -Make it possible to add to cart
     -Add functionality to vuex(Добавил функциональность в vuex)
     -Initializer Store in app.vue
+    -Add button to product page(добаление товара в корзину)
+    -Show a toast message(сообщение об успешном добавлении)
