@@ -5,7 +5,7 @@
               <figure class="image mb-6">
                   <img :src="product.get_image">
               </figure>
-              <h1 class="title">{{ product.name }}</h1>
+              <h1 class="title">Продукт {{ product.name }}</h1>
               <p>{{ product.description }}</p>
           </div>
           <div class="column is-3">
