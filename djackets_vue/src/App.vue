@@ -12,8 +12,8 @@
     </div>
     <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
       <div class="navbar-end">
-        <router-link to="/tops" class="navbar-item">Популярное</router-link>
-        <router-link to="/bottoms" class="navbar-item">Другое</router-link>
+        <router-link to="/summer" class="navbar-item">Популярное</router-link>
+        <router-link to="/winter" class="navbar-item">Другое</router-link>
       <div class="navbar-item">
         <div class="buttons">
           <router-link to="/log-in" class="button is-light">Войти</router-link>
@@ -69,7 +69,7 @@ export default {
 }
 </script>
 <style lang="scss">
-// @charset "utf-8";
+@charset "utf-8";
 @import "../node_modules/bulma/bulma.sass";
 
 .lds-dual-ring {

@@ -19,3 +19,5 @@ Todo list
     -Show a toast message(сообщение об успешном добавлении)
  -Implement a loading bar(Реализовываем спинер загрузки)
  -Set document title (all page)(меняем Заголовок страницы)
+ -Make it possible to view a category(просмотр категорий)
+    -Convert the product to a component(создание одного компонента продукта)
