@@ -17,3 +17,4 @@ Todo list
     -Initializer Store in app.vue
     -Add button to product page(добаление товара в корзину)
     -Show a toast message(сообщение об успешном добавлении)
+ -Implement a loading bar(Реализовываем спинер загрузки)

@@ -1,38 +1,46 @@
 <template>
 <div id="wrapper">
+<!-- navbar -->
   <nav class="navbar is-light">
-  <div class="navbar-brand">
+    <div class="navbar-brand">
     <router-link to="/" class="navbar-item"><strong>Главная</strong></router-link>
-  <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-  <span aria-hidden="true"></span>
-  </a>
+      <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
+      <div class="navbar-end">
+        <router-link to="/tops" class="navbar-item">Популярное</router-link>
+        <router-link to="/bottoms" class="navbar-item">Другое</router-link>
+      <div class="navbar-item">
+        <div class="buttons">
+          <router-link to="/log-in" class="button is-light">Войти</router-link>
+          <router-link to="/cart" class="button is-dark">
+            <span class="icon"><i class="fas fa-shopping-cart"></i></span>
+            <span> ({{ cartTotalLength }})</span>
+          </router-link>
+        </div>
+      </div> 
   </div>
-<div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
-  <div class="navbar-end">
-    <router-link to="/tops" class="navbar-item">Популярное</router-link>
-    <router-link to="/bottoms" class="navbar-item">Другое</router-link>
-<div class="navbar-item">
-  <div class="buttons">
-    <router-link to="/log-in" class="button is-light">Войти</router-link>
-    <router-link to="/cart" class="button is-dark">
-    <span class="icon"><i class="fas fa-shopping-cart"></i></span>
-  <span> ({{ cartTotalLength }})</span>
-</router-link>
-  </div>
-  </div> 
-  </div>
-</div>
+    </div>
   </nav>
+<!-- spiner -->
+  <div class="is-loading-bar has-text-centered" v-bind:class="{'is-loading': $store.state.isLoading}">
+    <div class="lds-dual-ring"></div>
+  </div>
+<!-- section -->
   <section class="section">
     <router-view/>
   </section>
+<!-- footer -->
   <footer class="footer">
     <p class="has-text-centered">Copyright (с) 2023</p>
   </footer>
 </div>
 </template>
+
 <script>
 export default {
   data(){
@@ -61,6 +69,41 @@ export default {
 }
 </script>
 <style lang="scss">
-@charset "utf-8";
+// @charset "utf-8";
 @import "../node_modules/bulma/bulma.sass";
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #ccc;
+  border-color: #ccc transparent #ccc transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.is-loading-bar {
+  height: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.4s;
+  transition: all 0.4s;
+
+  &.is-loading {
+    height: 80px;
+  }
+}
 </style>
