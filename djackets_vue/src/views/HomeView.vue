@@ -41,10 +41,12 @@ export default {
   },
   mounted() {
     this.getLatestProducts()
+
+    document.title =  'Home | Djackets'   
   },
   methods: {
-    getLatestProducts(){
-        axios
+    async getLatestProducts(){
+        await axios
             .get('/api/v1/latest-products/')
             .then(response => {
                 this.latestProducts = response.data
@@ -52,6 +54,7 @@ export default {
             .catch(error =>{
                 console.log(error)
             })
+        this.$store.commit('setIsLoading', false)
     }
   },
   
@@ -60,7 +63,8 @@ export default {
 </script>
 
 <style scoped>
-.img {
+.image {
+    
     margin-top: -1.25rem;
     margin-left: -1.25rem;
     margin-right: -1.25rem;

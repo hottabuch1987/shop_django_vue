@@ -18,3 +18,4 @@ Todo list
     -Add button to product page(добаление товара в корзину)
     -Show a toast message(сообщение об успешном добавлении)
  -Implement a loading bar(Реализовываем спинер загрузки)
+ -Set document title (all page)(меняем Заголовок страницы)
