@@ -33,12 +33,12 @@
       </div>
     <!-- //search -->
       <div class="navbar-end">
-        <router-link to="/summer" class="navbar-item">Популярное</router-link>
-        <router-link to="/winter" class="navbar-item">Другое</router-link>
+        <router-link to="/apple" class="navbar-item">Apple</router-link>
+        <router-link to="/android" class="navbar-item">Другое</router-link>
       <div class="navbar-item">
         <div class="buttons">
           <router-link to="/log-in" class="button is-light">Войти</router-link>
-          <router-link to="/cart" class="button is-dark">
+          <router-link to="/cart" class="button is-success">
             <span class="icon"><i class="fas fa-shopping-cart"></i></span>
             <span> ({{ cartTotalLength }})</span>
           </router-link>
@@ -53,7 +53,7 @@
   </div>
 <!-- section -->
   <section class="section">
-    <router-view/>
+    <router-view />
   </section>
 <!-- footer -->
   <footer class="footer">
@@ -81,7 +81,7 @@ export default {
   computed: {
     cartTotalLength(){
       let totalLength = 0
-      for (let i = 0; i < this.cart.items.length; i++){
+      for (let i = 0; i < this.cart.items.length; i++) {
         totalLength += this.cart.items[i].quantity
       }
       return totalLength

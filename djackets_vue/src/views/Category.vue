@@ -35,7 +35,8 @@ export default{
         $route(to, from) {
         if (to.name === 'Category'){
             this.getCategory()
-        }}
+            }
+        }
     },
 
     methods: {
@@ -50,7 +51,7 @@ export default{
                 .then(response => {
                     this.category = response.data
 
-                    document.title = this.category.name + ' | Djackets'
+                    document.title = this.category.name + ' | mobile'
                 })
 
                 .catch(error =>{

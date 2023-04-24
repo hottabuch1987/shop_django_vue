@@ -22,3 +22,6 @@ Todo list
  -Make it possible to view a category(просмотр категорий)
     -Convert the product to a component(создание одного компонента продукта)
  -Add search functionality(добавилен поиск товаров)
+ -Vue --cart
+    --A cart item should be a component
+ -Add databse postgres

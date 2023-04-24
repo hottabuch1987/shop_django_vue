@@ -2,13 +2,13 @@
 <div class="home">
     <section class="hero is-medium is-dark mb-6">
         <div class="hero-body has-text-centered">
-            <p class="title mb-6">Wellcome to Djacket</p>
-            <p class="subtitle">The best jacket store online</p>
+            <p class="title mb-6">Добро пожаловать в mobile - shop</p>
+            <p class="subtitle">Лучший интернет-магазин телефонов</p>
         </div>
     </section>
-        <div class="columns-is-multiline">
+        <div class="columns is-multiline">
             <div class="column is-12">
-                <h2 class="is-size-2 has-text-centered">Latest products</h2>
+                <h2 class="is-size-2 has-text-centered">Последние продукты</h2>
             </div>
 
             <ProductBox 
@@ -38,10 +38,11 @@ export default {
   mounted() {
     this.getLatestProducts()
 
-    document.title =  'Home | Djackets'   
+    document.title =  'Главная | mobile'   
   },
   methods: {
     async getLatestProducts(){
+        this.$store.commit('setIsLoading', true)
         await axios
             .get('/api/v1/latest-products/')
             .then(response => {

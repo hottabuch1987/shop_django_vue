@@ -51,7 +51,7 @@ export default {
                 .then(response => {
                     this.product = response.data
 
-                    document.title = this.product.name + ' | Djackets'                })
+                    document.title = this.product.name + ' | mobail'                })
                 .catch(error =>{
                     console.log(error)
                 })
@@ -67,7 +67,7 @@ export default {
             }
             this.$store.commit('addToCart', item)
             toast ({
-                message: 'Подукт добавлен в козину!',
+                message: 'Продукт добавлен в корзину!',
                 type: 'is-success',
                 dismissible: true,
                 pauseOnHover: 2000,
