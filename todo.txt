@@ -30,3 +30,4 @@ Todo list
   -Remove from cart(удаление из корзины)
 -Make it possible to sing up(регистрация)
 -Make it possible to log-in(вход)
+-Create a simple my account page(Создание страницы аккаунта)

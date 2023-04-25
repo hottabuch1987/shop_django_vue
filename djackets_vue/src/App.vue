@@ -35,9 +35,16 @@
       <div class="navbar-end">
         <router-link to="/apple" class="navbar-item">Apple</router-link>
         <router-link to="/android" class="navbar-item">Android</router-link>
+    <!-- my-account -->
       <div class="navbar-item">
         <div class="buttons">
-          <router-link to="/log-in" class="button is-light">Войти</router-link>
+          <templete v-if="$store.state.isAuthenticated">
+              <router-link to="/my-account" class="button is-light">Мой аккаунт</router-link>
+          </templete>
+          <templete v-else>
+              <router-link to="/log-in" class="button is-light">Войти</router-link>
+          </templete>
+     <!-- cart     -->
           <router-link to="/cart" class="button is-success">
             <span class="icon"><i class="fas fa-shopping-cart"></i></span>
             <span> ({{ cartTotalLength }})</span>
