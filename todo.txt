@@ -33,3 +33,5 @@ Todo list
 -Create a simple my account page(Создание страницы аккаунта)
 -Checkout
 ++Refactor remove product cart
+-Procees to checkout (Authentication)(оформления заказа)
+-Create a simple success page(страница успешной оплаты)

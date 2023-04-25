@@ -96,7 +96,7 @@
                     </div>
             <!--  endform -->
                     <div class="notification is-danger mt-4" v-if="errors.length">
-                            <p v-for="error in erros" v-bind:key="error">{{error}}</p>
+                            <p v-for="error in errors" v-bind:key="error">{{error}}</p>
                     </div>
                     <hr>
 
@@ -143,6 +143,28 @@ export default {
             return item.quantity * item.product.price
         },
         submitForm() {
+            this.errors = []
+                if (this.first_name === '') {
+                    this.errors.push('поле "имя" отсутствует!')
+                }
+                if (this.last_name === '') {
+                    this.errors.push('поле "фамилия" отсутствует!')
+                }
+                if (this.email === '') {
+                    this.errors.push('поле "email" отсутствует!')
+                }
+                if (this.phone === '') {
+                    this.errors.push('поле "телефон" отсутствует!')
+                }
+                if (this.address === '') {
+                    this.errors.push('поле "адрес" отсутствует!')
+                }
+                if (this.zipcode === '') {
+                    this.errors.push('поле "индекс" отсутствует!')
+                }
+                if (this.place === '') {
+                    this.errors.push('поле "место" отсутствует!')
+            }
         }
 
     },

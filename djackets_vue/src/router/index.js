@@ -10,6 +10,7 @@ import SingUp from '../views/SingUp.vue'
 import LogIn from '../views/LogIn.vue'
 import MyAccount from '../views/MyAccount.vue'
 import Checkout from '../views/Checkout.vue'
+import Success from '../views/Success.vue'
 
 const routes = [
   {
@@ -48,6 +49,7 @@ const routes = [
       requireLogin: true
     }
   },
+
   {
     path: '/cart/checkout',
     name: 'Checkout',
@@ -55,6 +57,11 @@ const routes = [
     meta: {
       requireLogin: true
     }
+  },
+  {
+    path: '/success',
+    name: 'Success',
+    component: Success
   },
   {
     path: '/cart',
