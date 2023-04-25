@@ -37,7 +37,77 @@
             </div>
             <div class="column is-12 box">
                 <h2 class="subtitle">Оформление покупки</h2>
-                <p class="has-text=grey mb-4">Все поля обязательны для заполнения</p>
+                <p class="has-text=grey mb-4">Все поля обязательны для заполнения*</p>
+                <div class="columns is-multiline">
+            <!-- form -->
+                    <div class="column is-6">
+
+                        <div class="field">
+                            <label>Имя*</label>
+                            <div class="contol">
+                                <input type="text" class='input' v-model="first_name">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Фамилия*</label>
+                            <div class="contol">
+                                <input type="text" class='input' v-model="last_name">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Email*</label>
+                            <div class="contol">
+                                <input type="email" class='input' v-model="email">
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label>Телефон*</label>
+                            <div class="contol">
+                                <input type="text" class='input' v-model="phone">
+                            </div>
+                        </div>
+                    </div>
+            <!--  -->
+                    <div class="column is-6">
+
+                            <div class="field">
+                                <label>Адрес*</label>
+                                <div class="contol">
+                                    <input type="text" class='input' v-model="address">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>Почтовый индекс*</label>
+                                <div class="contol">
+                                    <input type="text" class='input' v-model="zipcode">
+                                </div>
+                            </div>
+
+                            <div class="field">
+                                <label>Место*</label>
+                                <div class="contol">
+                                    <input type="text" class='input' v-model="place">
+                                </div>
+                            </div>        
+                    </div>
+            <!--  endform -->
+                    <div class="notification is-danger mt-4" v-if="errors.length">
+                            <p v-for="error in erros" v-bind:key="error">{{error}}</p>
+                    </div>
+                    <hr>
+
+                    <div id="card-element" class="mb-5"></div>
+                    <templete v-if="cartTotalLength">
+                        <hr>
+
+                        <button class="button is-dark" @click="submitForm">Оплатить картой</button>
+                    </templete>   
+
+                </div>
             </div>
         </div>
     </div>
@@ -57,7 +127,7 @@ export default {
             last_name: '',
             email: '',
             phone: '',
-            addres: '',
+            address: '',
             zipcode: '',
             place: '',
             errors: []
@@ -69,9 +139,12 @@ export default {
         this.cart = this.$store.state.cart
     },
     methods: {
-         getItemTotal(item){
+        getItemTotal(item){
             return item.quantity * item.product.price
         },
+        submitForm() {
+        }
+
     },
     computed: {
         cartTotalLength() {

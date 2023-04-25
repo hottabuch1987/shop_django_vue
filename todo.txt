@@ -31,3 +31,5 @@ Todo list
 -Make it possible to sing up(регистрация)
 -Make it possible to log-in(вход)
 -Create a simple my account page(Создание страницы аккаунта)
+-Checkout
+++Refactor remove product cart
