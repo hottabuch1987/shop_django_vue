@@ -35,3 +35,4 @@ Todo list
 ++Refactor remove product cart
 -Procees to checkout (Authentication)(оформления заказа)
 -Create a simple success page(страница успешной оплаты)
+-Show my orders on the my account page(заказы на странице моей учетной записи)
