@@ -5,9 +5,9 @@
     <div class="navbar-brand">
     <router-link to="/" class="navbar-item"><strong>Главная</strong></router-link>
       <a class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbar-menu" @click="showMobileMenu = !showMobileMenu">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
       </a>
     </div>
     <div class="navbar-menu" id="navbar-menu" v-bind:class="{'is-active': showMobileMenu }">
@@ -34,7 +34,7 @@
     <!-- //search -->
       <div class="navbar-end">
         <router-link to="/apple" class="navbar-item">Apple</router-link>
-        <router-link to="/android" class="navbar-item">Другое</router-link>
+        <router-link to="/android" class="navbar-item">Android</router-link>
       <div class="navbar-item">
         <div class="buttons">
           <router-link to="/log-in" class="button is-light">Войти</router-link>
@@ -63,6 +63,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   data(){
     return{
@@ -74,13 +75,24 @@ export default {
   },
   beforeCreate(){
     this.$store.commit('initializeStore')
+
+    // token
+    const token = this.$store.state.token
+    
+    if (token) {
+      axios.defaults.headers.common['Authorization'] = 'Token' + token
+    } else {
+      axios.defaults.headers.common['Authorization'] = ''
+    }
   },
+  // token
   mounted(){
     this.cart = this.$store.state.cart
   },
   computed: {
     cartTotalLength(){
       let totalLength = 0
+      
       for (let i = 0; i < this.cart.items.length; i++) {
         totalLength += this.cart.items[i].quantity
       }

@@ -5,11 +5,11 @@
               <figure class="image mb-6">
                   <img :src="product.get_image">
               </figure>
-              <h1 class="title">Продукт {{ product.name }}</h1>
+              <h1 class="title">Телефон {{ product.name }}</h1>
               <p>{{ product.description }}</p>
           </div>
           <div class="column is-3">
-              <h2 clas="subtitle">Информация</h2>
+              <h2 clas="subtitle">Описание</h2>
               <p><strong>Цена: </strong> {{ product.price }}</p>
           <div class="field has-addons mt-6">
               <div class="control">

@@ -22,6 +22,7 @@
                             v-for="item in cart.items"
                             v-bind:key="item.product.id"
                             v-bind:initialItem="item"
+                            v-on:removeFromCart="removeFromCart"
                             />
                     </tbody>
                 </table>
@@ -57,9 +58,15 @@ export default {
             }
         }
     },
-    mounted() {
-        this.cart = this.$store.state.cart
         
+    
+    mounted() {
+        this.cart = this.$store.state.cart    
+    },
+    methods: {
+        removeFromCart(item) {
+            this.cart.item = this.cart.item.filter(i => i.product !== item.product.id)
+        }
     },
   
     computed: {

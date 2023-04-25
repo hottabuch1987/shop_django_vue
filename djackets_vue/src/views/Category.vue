@@ -5,7 +5,7 @@
                 <h2 class="is-size-2 has-text-centered">{{category.name}}</h2>
             </div>
             <ProductBox 
-                v-for="product in category.product"
+                v-for="product in category.products"
                 v-bind:key="product.id"
                 v-bind:product="product"
             />
@@ -24,7 +24,7 @@ export default{
     data() {
         return {
             category: {
-                product: []
+                products: []
             }
         }
     },
@@ -42,12 +42,12 @@ export default{
     methods: {
         async getCategory() {
             const categorySlug = this.$route.params.category_slug
-            console.log(categorySlug)
+            
 
             this.$store.commit('setIsLoading', true)
 
             axios
-                .get(`/api/v1/products/${categorySlug}`)
+                .get(`/api/v1/products/${categorySlug}/`)
                 .then(response => {
                     this.category = response.data
 
