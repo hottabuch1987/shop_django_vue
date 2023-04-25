@@ -4,6 +4,7 @@
             <div class="column is-12">
                 <h1 class="title">Расчетный счет</h1>
             </div>
+
             <div class="column is-12 box">
                 <table class="table is-fullwidth">
                     <thead>
@@ -14,6 +15,7 @@
                             <th>Общая стоимость</th>
                         </tr>
                     </thead>
+
                     <tbody>
                         <tr
                             v-for="item in cart.items"
@@ -37,7 +39,9 @@
             </div>
             <div class="column is-12 box">
                 <h2 class="subtitle">Оформление покупки</h2>
+                
                 <p class="has-text=grey mb-4">Все поля обязательны для заполнения*</p>
+                
                 <div class="columns is-multiline">
             <!-- form -->
                     <div class="column is-6">
@@ -94,26 +98,29 @@
                                 </div>
                             </div>        
                     </div>
+                </div>
             <!--  endform -->
-                    <div class="notification is-danger mt-4" v-if="errors.length">
-                            <p v-for="error in errors" v-bind:key="error">{{error}}</p>
-                    </div>
+                <div class="notification is-danger mt-4" v-if="errors.length">
+                    <p v-for="error in errors" v-bind:key="error">{{error}}</p>
+                </div>
+                <hr>
+
+                <div id="card-element" class="mb-5"></div>
+                <template v-if="cartTotalLength">
                     <hr>
 
-                    <div id="card-element" class="mb-5"></div>
-                    <templete v-if="cartTotalLength">
-                        <hr>
+                    <button class="button is-dark" @click="submitForm">Оплатить картой</button>
+                </template>   
 
-                        <button class="button is-dark" @click="submitForm">Оплатить картой</button>
-                    </templete>   
-
-                </div>
+               
             </div>
         </div>
     </div>
 </template>
+
 <script>
 import axios from'axios'
+
 export default {
     name: "Checkout",
     data(){
@@ -134,9 +141,17 @@ export default {
         }
     },
     mounted() {
-        document.titile = 'Cчет | mobile'
+        document.title = 'Cчет | mobile'
 
         this.cart = this.$store.state.cart
+
+        if (this.cartTotalLength > 0) {
+            this.stripe = Stripe('pk_test_51H1HiuKBJV2qfWbD2gQe6aqanfw6Eyul5PO2KeOuSRlUMuaV4TxEtaQyzr9DbLITSZweL7XjK3p74swcGYrE2qEX00Hz7GmhMI')
+            const elements = this.stripe.elements()
+            this.card = elements.create('card', {hidePostalCode: true})
+
+            this.card.mount('#card-element')
+        }
     },
     methods: {
         getItemTotal(item){
@@ -144,41 +159,94 @@ export default {
         },
         submitForm() {
             this.errors = []
-                if (this.first_name === '') {
+            if (this.first_name === '') {
                     this.errors.push('поле "имя" отсутствует!')
-                }
-                if (this.last_name === '') {
+            }
+            if (this.last_name === '') {
                     this.errors.push('поле "фамилия" отсутствует!')
                 }
-                if (this.email === '') {
+            if (this.email === '') {
                     this.errors.push('поле "email" отсутствует!')
-                }
-                if (this.phone === '') {
+            }
+            if (this.phone === '') {
                     this.errors.push('поле "телефон" отсутствует!')
-                }
-                if (this.address === '') {
+            }
+            if (this.address === '') {
                     this.errors.push('поле "адрес" отсутствует!')
-                }
-                if (this.zipcode === '') {
+            }
+            if (this.zipcode === '') {
                     this.errors.push('поле "индекс" отсутствует!')
-                }
-                if (this.place === '') {
+            }
+            if (this.place === '') {
                     this.errors.push('поле "место" отсутствует!')
             }
+            if (!this.errors.length) {
+                    this.$store.commit('setIsLoading', true)
+
+                    this.stripe.createToken(this.card).then(result => {
+                        if (result.error) {
+                            this.$store.commit('setIsLoading', false)
+
+                            this.errors.push('Что то пошло не так, попробуйте еще раз')
+                            
+                            console.log(result.error.message)
+                        } else {
+                            this.stripeTokenHandler(result.token)
+                        }
+                    })
+                }
+        },
+        async stripeTokenHandler(token) {
+            const items = []
+
+            for (let i = 0; i < this.cart.items.length; i++) {
+                const item = this.cart.items[i]
+                const obj = {
+                    product: item.product.id,
+                    quantity: item.quantity,
+                    price: item.product.price * item.quantity
+                }
+                items.push(obj)
+            }
+
+            const data = {
+                'first_name': this.first_name,
+                'last_name': this.last_name,
+                'email': this.email,
+                'address': this.address,
+                'zipcode': this.zipcode,
+                'place': this.place,
+                'items': items,
+                'stripe_token': token.id
+            }
+
+            await axios
+                .post('/api/v1/checkout/', data)
+                .then(response => {
+                    this.$store.commit('clearCart')
+                    this.$router.push('/cart/success')
+                })
+                .catch(error => {
+                    this.errors.push('Что-то пошло не так. Пожалуйста попробуйте еще раз')
+                    console.log(error)
+                })
+                this.$store.commit('setLoading', false)
+
         }
 
     },
     computed: {
-        cartTotalLength() {
-            return this.cart.items.reduce((acc, curVal) => {
-                return acc += curVal.quantity
-            }, 0)
-        },
         cartTotalPrice() {
             return this.cart.items.reduce((acc, curVal) => {
                 return acc += curVal.product.price * curVal.quantity
             }, 0)
         },
+        cartTotalLength() {
+            return this.cart.items.reduce((acc, curVal) => {
+                return acc += curVal.quantity
+            }, 0)
+        }
+        
     }
 }
 </script>

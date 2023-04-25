@@ -8,13 +8,37 @@
             <div class="column is-12">
                 <button @click="logout()" class="button is-danger">Выход</button>
             </div>
+            <hr>
+            <div class="column is-12">
+                <h2 class="subtitle">Мои заказы</h2>
+                <OrderSummery
+                    v-for="order in orders"
+                    v-bind:key="order.id"
+                    v-bind:order="order"
+                />
+            </div>
         </div>
     </div>
 </template>
 <script>
 import axios from 'axios'
+import OrderSummary from '@/components/OrderSummary.vue'
+
 export default {
     name: 'MyAccount',
+    component: {OrderSummary},
+    data() {
+        return {
+            orders: []
+        }
+    },
+
+    mounted() {
+        document.title = "Мой аккаунт | mobile"
+
+        this.getMyOrders()
+    },
+
     methods: {
         logout() {
             axios.defaults.headers.common['Authorization'] = ''
@@ -26,6 +50,19 @@ export default {
             this.$store.commit('removeToken')
 
             this.$router.push('/')
+        },
+        async getMyOrders() {
+            this.$store.commit('setLodaing', true)
+
+            await axios
+                .get('/api/v1/orders/')
+                .then(response => {
+                    this.orders = response.data
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+            this.$store.commit('setLoading', false)
         }
     },
 }
