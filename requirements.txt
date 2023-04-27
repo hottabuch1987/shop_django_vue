@@ -27,3 +27,5 @@ stripe==5.4.0
 urllib3==1.26.15
 
 psycopg2-binary==2.9.6
+django-environ==0.10.0
+
