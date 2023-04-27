@@ -7,13 +7,18 @@ from rest_framework.decorators import api_view
 
 from .models import Product, Category
 from .serializers import ProductSerializer, CategorySerializer
+from rest_framework import viewsets
 
 
-class LatestProductsList(APIView):
-    def get(self, request, format=None):
-        products = Product.objects.all()[0:4]
-        serializer = ProductSerializer(products, many=True)
-        return Response(serializer.data)
+# class LatestProductsList(APIView):
+#     def get(self, request, format=None):
+#         products = Product.objects.all()[0:4]
+#         serializer = ProductSerializer(products, many=True)
+#         return Response(serializer.data)
+
+class LatestProductsList(viewsets.ModelViewSet):
+    queryset = Product.objects.all()[0:4]
+    serializer_class = ProductSerializer
 
 
 class ProductDetail(APIView):

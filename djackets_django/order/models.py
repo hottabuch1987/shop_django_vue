@@ -5,19 +5,21 @@ from product.models import Product
 
 
 class Order(models.Model):
-    user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE)
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
+    user = models.ForeignKey(User, related_name='orders', on_delete=models.CASCADE, verbose_name='заказчик')
+    first_name = models.CharField(max_length=100, verbose_name='имя')
+    last_name = models.CharField(max_length=100, verbose_name='фамилия')
     email = models.CharField(max_length=120)
-    address = models.CharField(max_length=150)
-    zipcode = models.CharField(max_length=100)
-    place = models.CharField(max_length=120)
-    phone = models.CharField(max_length=20)
-    created_at = models.DateTimeField(auto_now_add=True)
+    address = models.CharField(max_length=150, verbose_name='адрес')
+    zipcode = models.CharField(max_length=100, verbose_name='почтовый индекс')
+    place = models.CharField(max_length=120, verbose_name='место')
+    phone = models.CharField(max_length=20, verbose_name='телефон')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='дата создания')
     paid_amount = models.DecimalField(max_digits=8, decimal_places=2, blank=True, null=True)
     stripe_token = models.CharField(max_length=120)
 
     class Meta:
+        verbose_name = 'Заказ'
+        verbose_name_plural = 'Заказы продуктов'
         ordering = ['-created_at', ]
 
     def __str__(self):

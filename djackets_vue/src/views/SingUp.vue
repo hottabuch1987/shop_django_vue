@@ -68,9 +68,11 @@ export default {
             if (this.username === '') {
                 this.errors.push('Имя пользователя не должно быть пустым')
             }
+           
             if (this.password !== this.password2) {
                 this.errors.push('Пароли не совпадают')
             }
+           
             if (!this.errors.length) {
                 const formData = {
                     username: this.username,

@@ -36,3 +36,4 @@ Todo list
 -Procees to checkout (Authentication)(оформления заказа)
 -Create a simple success page(страница успешной оплаты)
 -Show my orders on the my account page(заказы на странице моей учетной записи)
+    -An order should be a component
