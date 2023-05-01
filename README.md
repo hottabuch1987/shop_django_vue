@@ -3,7 +3,7 @@ My Shop
 #docker run django:
   1) docker-compose build
   2) docker-compose up
-  new terminal
+#new terminal
   3) docker-compose run --rm web-app sh -c 'python manage.py makemigrations'
   4) docker-compose run --rm web-app sh -c 'python manage.py migrate'
   5) docker-compose run --rm web-app sh -c 'python manage.py createsuperuser'
