@@ -1,13 +1,15 @@
 from django.db.models import Q
 from django.http import Http404
+from rest_framework.permissions import IsAuthenticated
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
+from rest_framework.viewsets import ModelViewSet
 
-from .models import Product, Category
-from .serializers import ProductSerializer, CategorySerializer
-from rest_framework import viewsets
+from .models import Product, Category, Review
+from .serializers import ProductSerializer, CategorySerializer, ReviewSerailizer
+from rest_framework import viewsets, permissions
 
 
 # class LatestProductsList(APIView):
@@ -57,3 +59,17 @@ def search(request):
         return Response(serializer.data)
     else:
         return Response({"products": []})
+
+
+class ReviewView(ModelViewSet):
+    """Отзыв"""
+    queryset = Review.objects.all()
+    serializer_class = ReviewSerailizer
+#
+
+
+
+
+
+
+

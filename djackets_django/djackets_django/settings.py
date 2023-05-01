@@ -110,8 +110,6 @@ WSGI_APPLICATION = 'djackets_django.wsgi.application'
 #     }
 # }
 
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -121,9 +119,6 @@ DATABASES = {
         'PASSWORD': env('DB_PASS'),
     }
 }
-
-
-
 
 
 

@@ -1,7 +1,7 @@
-
 from rest_framework import serializers
 
-from .models import Category, Product
+from .models import Category, Product, Review
+
 
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,6 +16,7 @@ class ProductSerializer(serializers.ModelSerializer):
             "get_thumbnail"
         )
 
+
 class CategorySerializer(serializers.ModelSerializer):
     products = ProductSerializer(many=True)
 
@@ -27,3 +28,11 @@ class CategorySerializer(serializers.ModelSerializer):
             "get_absolute_url",
             "products",
         )
+
+
+class ReviewSerailizer(serializers.ModelSerializer):
+    """Отзыв"""
+
+    class Meta:
+        model = Review
+        fields = ("__all__")

@@ -3,6 +3,7 @@ from PIL import Image
 
 from django.core.files import File
 from django.db import models
+from rest_framework.authtoken.admin import User
 
 
 class Category(models.Model):
@@ -31,13 +32,15 @@ class Product(models.Model):
     thumbnail = models.ImageField(upload_to='uploads/', blank=True, null=True, verbose_name='миниатюра')
     date_added = models.DateTimeField(auto_now_add=True, verbose_name='дата добавления')
 
+
+
     class Meta:
         verbose_name = 'Продукт'
         verbose_name_plural = 'Продукты товаров'
         ordering = ('-date_added',)
 
     def __str__(self):
-        return  self.name
+        return self.name
 
     def get_absolute_url(self):
         return f'/{self.category.slug}/{self.slug}/'
@@ -70,3 +73,18 @@ class Product(models.Model):
         thumbnail = File(thumb_io, name=image.name)
 
         return thumbnail
+
+
+class Review(models.Model):
+    """Отзывы"""
+    email = models.EmailField()
+    name = models.CharField("Имя", max_length=100)
+    text = models.TextField("Сообщение", max_length=5000)
+    movie = models.ForeignKey(Product, verbose_name="продукт", on_delete=models.CASCADE, related_name='review')
+
+    def __str__(self):
+        return f"{self.name} - {self.movie}"
+
+    class Meta:
+        verbose_name = "Отзыв"
+        verbose_name_plural = "Отзывы"

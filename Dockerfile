@@ -2,7 +2,7 @@ FROM python:3.9-alpine3.16
 
 COPY requirements.txt /temp/requirements.txt
 
-COPY service /service
+COPY djackets_django /service
 
 WORKDIR /service
 

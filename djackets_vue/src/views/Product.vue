@@ -2,6 +2,7 @@
   <div class="page-product">
       <div class="columns is-multiline">
           <div class="column is-9">
+            <StarRating />
               <figure class="image mb-6">
                   <img :src="product.get_image">
               </figure>
@@ -25,10 +26,15 @@
 </template>
 
 <script>
+
 import axios from 'axios'
 import { toast } from 'bulma-toast'
+
+import StarRating from '@/components/StarRating.vue'
 export default {
     name: 'Product',
+    components:{StarRating},
+
     data(){
         return {
             product: {},

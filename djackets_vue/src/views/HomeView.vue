@@ -10,12 +10,13 @@
             <div class="column is-12">
                 <h2 class="is-size-2 has-text-centered">Последние продукты</h2>
             </div>
-
+            
             <ProductBox 
                 v-for="product in latestProducts"
                 v-bind:key="product.id"
                 v-bind:product="product"
             />
+            
         </div>
  </div>
 
@@ -24,6 +25,7 @@
 <script>
 import axios from 'axios'
 import ProductBox from '@/components/ProductBox'
+
 
 
 export default {

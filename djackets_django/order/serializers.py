@@ -4,6 +4,9 @@ from .models import Order, OrderItem
 
 from product.serializers import ProductSerializer
 
+from django.contrib.auth.models import User
+
+
 
 class MyOrderItemSerializer(serializers.ModelSerializer):
     product = ProductSerializer()
@@ -73,3 +76,5 @@ class OrderSerializer(serializers.ModelSerializer):
             OrderItem.objects.create(order=order, **item_data)
 
         return order
+
+
