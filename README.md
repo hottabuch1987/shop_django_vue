@@ -1,7 +1,35 @@
-# shop_django_vue
+#####__shop_django_vue__
 
-My Shop docker run django:
-branch 2
+# Установка django
+
+### 1) Создать виртуальное окружение
+    python3 -m venv venv
+    source venv/bin/activate
+
+### 2) Установить зависимости
+
+    pip install -r requirements.txt
+
+### 3) Выполнить миграции
+
+    python manage.py migrate    
+
+### 4) Создать суперпользователя
+
+    python manage.py createsuperuser
+
+# Старт
+
+    python manage.py runserver
+    
+# Установка vue
+    npm i
+ 
+    npm run serve
+#__________________________________________________#    
+
+My Shop docker run docker:
+# Установка: ветка 2; branch 2
 
     ##
     
