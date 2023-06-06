@@ -1,4 +1,5 @@
-[![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Интернет магазин на django и vue)](https://git.io/typing-svg)
+### [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Интернет Магазин)](https://git.io/typing-svg)
+
 
 
 # Установка django
@@ -28,7 +29,6 @@
  
     npm run serve
     
-### [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Run docker)](https://git.io/typing-svg)
 
 # Установка: ветка 2; branch 2
 
