@@ -4,35 +4,25 @@
 
 # Установка django
 
-### 1) Создать виртуальное окружение
+### 1) Создать виртуальное окружение установить зависимости
     python3 -m venv venv
     source venv/bin/activate
-
-### 2) Установить зависимости
-
     pip install -r requirements.txt
 
-### 3) Выполнить миграции
+### 2) Выполнить миграции, cоздать суперпользователя и запустить сервер
 
-    python manage.py migrate    
-
-### 4) Создать суперпользователя
-
+    python manage.py makemigrations
+    python manage.py migrate
     python manage.py createsuperuser
-
-# Старт
-
     python manage.py runserver
     
 # Установка vue
     npm i
- 
     npm run serve
     
 
-# Установка: ветка 2; branch 2
+# Docker Run: ветка 2; branch 2
     
-    ##Docker Run
     
     docker-compose build
     docker-compose up 
