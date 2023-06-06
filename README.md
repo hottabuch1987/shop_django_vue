@@ -31,8 +31,8 @@
     
 
 # Установка: ветка 2; branch 2
-    [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Интернет+Магазин+run+docker)](https://git.io/typing-svg)
-    ##
+    
+    ##Docker Run
     
     docker-compose build
     docker-compose up 
