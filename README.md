@@ -1,4 +1,5 @@
-#####__shop_django_vue__
+### [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Интернет магазин на django и vue)](https://git.io/typing-svg)
+
 
 # Установка django
 
@@ -26,9 +27,9 @@
     npm i
  
     npm run serve
-#__________________________________________________#    
+    
+### [![Typing SVG](https://readme-typing-svg.herokuapp.com?color=%2336BCF7&lines=Run docker)](https://git.io/typing-svg)
 
-My Shop docker run docker:
 # Установка: ветка 2; branch 2
 
     ##
